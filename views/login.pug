@@ -1,0 +1,17 @@
+html
+  head
+    title Login
+  body
+    h2 Login
+    form(method="POST" action="/login")
+      input(type="hidden",name="challenge",value=challenge)
+      div
+        label(for="email") Email
+      div
+        input(id="email" name="email")
+      div
+        label(for="password") Password
+      div
+        input(type="password" id="password" name="password")
+      div
+        input(type="submit")
