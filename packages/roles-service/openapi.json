@@ -11,6 +11,28 @@
 				"summary": "Get all roles",
 				"description": "Returns all roles",
 				"tags": ["roles"],
+				"parameters": [
+					{
+						"name": "current_page",
+						"in": "query",
+						"description": "Page to return",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"default": 0
+						}
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Page size",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"default": 10
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Successfully returned all users",
@@ -32,6 +54,25 @@
 				"summary": "Create a new role",
 				"description": "Create a new role",
 				"tags": ["roles"],
+				"requestBody": {
+					"description": "The new role",
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": ["name", "email_prefix"],
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"email_prefix": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -45,22 +86,126 @@
 					}
 				}
 			}
+		},
+		"/roles/{roleId}": {
+			"get": {
+				"operationId": "get-role",
+				"summary": "Get role",
+				"description": "Get role",
+				"tags": ["roles"],
+				"parameters": [
+					{
+						"name": "roleId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Role"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "role not found"
+					}
+				}
+			},
+			"patch": {
+				"operationId": "update-role",
+				"summary": "Update a role",
+				"description": "Update a role",
+				"tags": ["roles"],
+				"parameters": [
+					{
+						"name": "roleId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "The role values to be updated",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"email_prefix": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Role"
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "delete-role",
+				"summary": "Delete a role",
+				"description": "Delete a role",
+				"tags": ["roles"],
+				"parameters": [
+					{
+						"name": "roleId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "OK"
+					}
+				}
+			}
 		}
 	},
 	"components": {
 		"schemas": {
 			"Role": {
 				"type": "object",
-				"required": ["id", "name"],
+				"required": ["id", "name", "email_prefix"],
 				"properties": {
 					"id": {
 						"type": "string"
 					},
 					"name": {
 						"type": "string"
+					},
+					"email_prefix": {
+						"type": "string"
 					}
 				}
 			}
-		}
+		},
+		"parameters": {}
 	}
 }

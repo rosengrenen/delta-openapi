@@ -7,14 +7,19 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"generate-openapi": "openapi-generator-cli generate -i openapi.json -g typescript-axios -o src/__generated__"
-	},
-	"devDependencies": {
-		"@openapitools/openapi-generator-cli": "^2.1.7",
-		"@types/express": "^4.17.9",
-		"typescript": "^4.1.2"
+		"build": "yarn generate-openapi && tsc",
+		"dev": "ts-node-dev --transpile-only src/index.ts",
+		"generate-openapi": "openapi-typescript openapi.json --output src/__generated__/openapi-schema.ts"
 	},
 	"dependencies": {
-		"express": "^4.17.1"
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1",
+		"express-openapi-validator": "^4.7.1"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.9",
+		"openapi-typescript": "^2.4.2",
+		"ts-node-dev": "^1.0.0",
+		"typescript": "^4.1.2"
 	}
 }
