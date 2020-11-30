@@ -1,7 +1,9 @@
 import { createApplication } from 'graphql-modules';
 
-import { testModule } from './test';
+import { relayModule } from './relay';
+import { roleModule } from './role';
+import { rootModule } from './root';
 
 export const application = createApplication({
-	modules: [testModule],
+	modules: [rootModule, relayModule, roleModule],
 });
