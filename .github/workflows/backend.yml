@@ -14,9 +14,13 @@ jobs:
         node-version: 14
     - name: Install yarn packages
       run: yarn --frozen-lockfile
+      working-directory: packages/backend
     - name: Build
       run: yarn build
+      working-directory: packages/backend
     - name: Test
       run: yarn test
+      working-directory: packages/backend
     - name: Lint
       run: yarn lint
+      working-directory: packages/backend
