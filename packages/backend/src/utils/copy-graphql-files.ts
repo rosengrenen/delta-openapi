@@ -7,7 +7,9 @@ glob('src/modules/**/*.gql', async (error, files) => {
 		return;
 	}
 
-	const BASE_PATH = __dirname.replace(/src$/, '');
+	console.log(files);
+
+	const BASE_PATH = __dirname.replace(/src\/utils$/, '');
 	for (const file of files) {
 		const localFilePath = file.replace(/^src/, '');
 
@@ -15,18 +17,19 @@ glob('src/modules/**/*.gql', async (error, files) => {
 		const to = BASE_PATH + 'dist' + localFilePath;
 
 		const folder = to.split('/').slice(0, -1).join('/');
+
 		new Promise((resolve, reject) => {
 			fs.access(folder, err => {
-				if (!err) {
-					fs.mkdir(folder, { recursive: true }, error => {
-						if (error) {
-							reject(error);
+				if (err) {
+					fs.mkdir(folder, { recursive: true }, err => {
+						if (err) {
+							reject(err);
 						}
 
-						resolve();
+						resolve(undefined);
 					});
 				} else {
-					resolve();
+					resolve(undefined);
 				}
 			});
 		})
@@ -34,7 +37,7 @@ glob('src/modules/**/*.gql', async (error, files) => {
 				return new Promise(resolve => {
 					fs.copyFile(from, to, () => {
 						console.log('Copied', from, 'to', to);
-						resolve();
+						resolve(undefined);
 					});
 				});
 			})

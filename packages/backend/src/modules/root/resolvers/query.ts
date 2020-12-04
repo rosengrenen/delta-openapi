@@ -1,6 +1,6 @@
-import { RootModule } from '../__generated__/module-types';
+import { ModuleResolversType } from '../../../utils/graphql-modules';
 
-const resolvers: RootModule.Resolvers = {
+const resolvers: ModuleResolversType = {
 	Query: {
 		_: () => null,
 	},
