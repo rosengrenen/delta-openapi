@@ -6,7 +6,6 @@
 	"author": "Rasmus Rosengren <rasmus.rosengren@pm.me>",
 	"license": "MIT",
 	"private": true,
-	"type": "module",
 	"scripts": {
 		"build": "yarn generate-graphql-schema && yarn generate-graphql-types && tsc && yarn copy-graphql-files",
 		"clean": "rimraf dist **/__generated__",
