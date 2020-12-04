@@ -1,11 +1,12 @@
 import { toGlobalId } from '../../../utils/global-id';
-import { RoleModule } from '../__generated__/module-types';
+import { ModuleResolversType } from '../../../utils/graphql-modules';
 
-const resolvers: RoleModule.Resolvers = {
+const resolvers: ModuleResolversType = {
 	Role: {
 		id: ({ id }) => toGlobalId('Role', id),
 		email_prefix: ({ id }) => 'generic email prefix' + id,
-		name: ({ id }) => 'generic name' + id,
+		name_en: ({ id }) => 'generic name' + id,
+		name_sv: ({ id }) => 'generic name' + id,
 	},
 };
 

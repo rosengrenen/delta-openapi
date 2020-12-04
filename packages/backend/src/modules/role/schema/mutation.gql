@@ -1,37 +1,38 @@
 # Create role mutation
 input CreateRoleInput {
-  name: String!
-  email_prefix: String!
+	name_en: String!
+	name_sv: String!
+	email_prefix: String!
 }
 
 type CreateRolePayload {
-  role: Role!
+	role: Role!
 }
 
 extend type Mutation {
-  createRole(input: CreateRoleInput!): CreateRolePayload!
+	createRole(input: CreateRoleInput!): CreateRolePayload!
 }
-
 
 # Update role mutation
 input UpdateRoleInput {
-  name: String
-  email_prefix: String
+	name_en: String
+	name_sv: String
+	email_prefix: String
 }
 
 type UpdateRolePayload {
-  role: Role!
+	role: Role!
 }
 
 extend type Mutation {
-  updateRole(id: ID!, input: UpdateRoleInput!): DeleteRolePayload!
+	updateRole(id: ID!, input: UpdateRoleInput!): DeleteRolePayload!
 }
 
 # Delete role mutation
 type DeleteRolePayload {
-  _empty: String!
+	_empty: String!
 }
 
 extend type Mutation {
-  deleteRole(id: ID!): DeleteRolePayload!
+	deleteRole(id: ID!): DeleteRolePayload!
 }

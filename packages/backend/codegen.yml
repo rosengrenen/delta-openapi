@@ -1,10 +1,10 @@
-schema: "./src/modules/**/schema/*.gql"
+schema: src/__generated__/schema.gql
 generates:
-  ./src/modules:
-    preset: graphql-modules
-    presetConfig:
-      baseTypesPath: ../__generated__/graphql.d.ts
-      filename: __generated__/module-types.d.ts
+  ./src/__generated__/types.d.ts:
     plugins:
       - typescript
       - typescript-resolvers
+    config:
+      typesPrefix: GQL
+      mappers:
+        Role: ./../modules/relay/utils/types#Node

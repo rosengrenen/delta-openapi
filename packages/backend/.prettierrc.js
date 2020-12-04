@@ -1,1 +1,1 @@
-module.exports = require("../../.prettierrc.base");
+module.exports = require('../../.prettierrc.base');

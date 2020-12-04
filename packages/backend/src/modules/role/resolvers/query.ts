@@ -1,6 +1,6 @@
-import { RoleModule } from '../__generated__/module-types';
+import { ModuleResolversType } from '../../../utils/graphql-modules';
 
-const resolvers: RoleModule.Resolvers = {
+const resolvers: ModuleResolversType = {
 	Query: {
 		roles: () => {
 			const roles = [

@@ -1,10 +1,6 @@
 type Role implements Node {
-  id: ID!
-  name: String!
-  email_prefix: String!
-}
-
-type Role2 implements Node {
-  id: ID!
-  test: String
+	id: ID!
+	name_en: String!
+	name_sv: String!
+	email_prefix: String!
 }
