@@ -7,8 +7,6 @@ glob('src/modules/**/*.gql', async (error, files) => {
 		return;
 	}
 
-	console.log(files);
-
 	const BASE_PATH = __dirname.replace(/src\/utils$/, '');
 	for (const file of files) {
 		const localFilePath = file.replace(/^src/, '');
