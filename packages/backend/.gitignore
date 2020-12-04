@@ -117,3 +117,6 @@ dist
 
 # Generated
 __generated__
+
+# Graphile-migrate
+migrations/current.sql

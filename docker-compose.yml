@@ -1,18 +1,17 @@
 version: "3.7"
 services:
   delta-postgres:
-    image: postgres:13.0
+    build: postgres
     environment:
-      - POSTGRES_DB=${DELTA_PG_DATABASE}
-      - POSTGRES_USER=${DELTA_PG_USERNAME}
-      - POSTGRES_PASSWORD=${DELTA_PG_PASSWORD}
+      - POSTGRES_PASSWORD=${DELTA_PG_ROOT_PASSWORD}
+      - POSTGRES_DELTA_PASSWORD=${DELTA_PG_PASSWORD}
     networks:
       - default
     ports:
       - 5432:5432
 
   pgadmin:
-    image: dpage/pgadmin4:4.27
+    image: dpage/pgadmin4:4.28
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
